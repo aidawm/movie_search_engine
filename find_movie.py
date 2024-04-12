@@ -16,17 +16,20 @@ class Movies:
     def find(self,query):
         result = self.redis.get_movie(query)
         if(result != None):
-            print("redis has it!")
+            result["source"] = "redis"
+            # print("redis has it!")
             return result
         result = self.elastic.search(query)
         if(result != None):
-            print("elastic has it!")
+            result["source"] = "elasticsearch"
+            # print("elastic has it!")
             self.redis.add_movie(query,result)
             return result
         
         result = self.imdb.find(query)
         if(result != None):
-            print("imdb has it!")
+            result["source"] = "imdb"
+            # print("imdb has it!")
             self.redis.add_movie(query,result)
             return result
         print("ERROR: can't find it!")

@@ -1,0 +1,20 @@
+{
+    "redis":{
+        "host":"redis",
+        "port": 6379,
+        "database": "movies"
+    },
+    "elasticsearch":{
+        "address": "http://elasticsearch:9200",
+        "username":"elastic",
+        "password":"12345",
+        "index": "your_index_name"
+    },
+    "imdb_api":{
+        "find_url":"https://imdb146.p.rapidapi.com/v1/find/",
+        "detail_url":"https://imdb146.p.rapidapi.com/v1/title/",
+        "API-Key": "API-Key",
+        "API-Host": "imdb146.p.rapidapi.com"
+    }
+
+}
