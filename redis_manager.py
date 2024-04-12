@@ -11,6 +11,7 @@ class Redis:
         self.rd = redis.Redis(host=self.configs["host"], port=self.configs["port"], decode_responses=True)
     
     def add_movie(self,query,movie_dict):
+        query = str(query).lower()
         self.rd.hset(query, mapping=movie_dict)
 
     def get_movie(self,movie_name):
