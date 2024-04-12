@@ -1,6 +1,8 @@
 from redis_manager import Redis 
 from elastic_manager import Elastic
 from imdb_api_manager import IMDb
+from flask import Flask, jsonify, request
+
 
 
 class Movies:
@@ -30,7 +32,18 @@ class Movies:
         print("ERROR: can't find it!")
 
 
-if __name__ == '__main__':
-    movies = Movies()
-    rs = movies.find("friends")
-    print(rs)
+app = Flask(__name__)   
+movies = Movies()
+
+@app.route('/query', methods=['GET'])
+def handle_query():
+    # Get the query parameter
+    query = request.args.get('query', '')
+
+    response = movies.find(query)
+    # Create a JSON response
+
+    return jsonify(response)
+
+
+app.run(debug=True)
