@@ -1,0 +1,5 @@
+redis == 5.0.3
+elasticsearch == 8.13.0
+flask == 2.2.2
+requests
+Werkzeug==2.2.2
